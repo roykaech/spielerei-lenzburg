@@ -56,23 +56,28 @@
       padding: 0.7rem 0.4rem;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-size: 0.9rem;
-      color: #111827;
-    }
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;              /* etwas mehr Abstand */
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 1.4rem;      /* grösserer Titel */
+  color: #111827;
+}
 
-    /* Logo im einfügen */
-    .logo-img {
-      height: 56px;        /* Logo-Höhe – kannst du bei Bedarf anpassen */
-      width: auto;
-      display: block;
-    }
+/* Logo-Bild doppelt so hoch wie vorher */
+.logo-img {
+  height: 112px;          /* vorher 56px → jetzt verdoppelt */
+  width: auto;
+  display: block;
+}
+
+/* optional: falls du den Text separat stylen willst */
+.logo-text {
+  line-height: 1.1;
+}
 
     /* Karte im Hintergrund */
     .logo-icon::before {
@@ -258,8 +263,9 @@
   <div class="container nav">
     <div class="logo">
       <img src="logo-spielerei-lenzburg.png"
-         alt="Spielerei Lenzburg"
-         class="logo-img" />
+           alt="Spielerei Lenzburg"
+           class="logo-img" />
+      <span class="logo-text">Spielerei Lenzburg</span>
     </div>
   </div>
 </header>
