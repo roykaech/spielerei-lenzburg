@@ -79,6 +79,66 @@
   line-height: 1.1;
 }
 
+/* gesamtes Layout der drei Boxen */
+.info-layout {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;   /* sorgt dafür, dass links/rechts gleich hoch werden */
+}
+
+/* linke Spalte: zwei Boxen untereinander */
+.info-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  flex: 1;
+}
+
+/* rechte Spalte: eine Box, die die volle Höhe einnimmt */
+.info-right {
+  flex: 1;
+  display: flex;
+}
+
+/* allgemeine Karten-Optik – an dein bestehendes Design anpassen */
+.info-card {
+  background: #f9fafb;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+/* beide linken Boxen gleich hoch machen */
+.info-left .info-card {
+  flex: 1;
+}
+
+/* rechte Box füllt gesamte Spaltenhöhe */
+.info-card-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Text oben, Bild unten */
+}
+
+/* Bild in der rechten Box */
+.info-image {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1.5rem;
+}
+
+/* optional: für Mobile alles untereinander stapeln */
+@media (max-width: 768px) {
+  .info-layout {
+    flex-direction: column;
+  }
+
+  .info-right {
+    display: block;
+  }
+}
+    
     /* Karte im Hintergrund */
     .logo-icon::before {
       content: "";
