@@ -4,19 +4,18 @@
   <meta charset="UTF-8" />
   <title>Spielerei Lenzburg – Brettspiele in Lenzburg</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Spielerei Lenzburg – offener Brettspieltreff in Lenzburg. Modern Games, Klassiker, Kartenspiele und mehr. Alle sind willkommen." />
+  <meta name="description" content="Spielerei Lenzburg – offener Brettspieltreff in Lenzburg. Moderne Brettspiele, Klassiker, Kartenspiele und mehr. Hier findest du eine Kurzbeschreibung und das Jahresprogramm 2026." />
   <style>
     :root {
-      --bg: #0b1020;
-      --bg-alt: #111827;
+      --bg: #f9fafb;
+      --bg-alt: #ffffff;
       --accent: #f59e0b;
       --accent-soft: #fbbf24;
-      --accent2: #3b82f6;
-      --card-bg: #111827;
-      --text: #e5e7eb;
-      --muted: #9ca3af;
-      --danger: #f97373;
-      --radius: 18px;
+      --accent2: #2563eb;
+      --card-border: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --radius: 16px;
     }
 
     * {
@@ -26,7 +25,7 @@
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      background: radial-gradient(circle at top, #e5e7eb 0, #f9fafb 45%, #ffffff 100%);
       color: var(--text);
       line-height: 1.6;
     }
@@ -39,9 +38,9 @@
       position: sticky;
       top: 0;
       z-index: 20;
-      backdrop-filter: blur(10px);
-      background: linear-gradient(to bottom, rgba(2,6,23,0.9), rgba(2,6,23,0.7));
-      border-bottom: 1px solid rgba(148,163,184,0.25);
+      backdrop-filter: blur(12px);
+      background: rgba(255,255,255,0.9);
+      border-bottom: 1px solid rgba(209,213,219,0.9);
     }
 
     .container {
@@ -54,50 +53,59 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.7rem 0.5rem;
+      padding: 0.7rem 0.4rem;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.55rem;
       font-weight: 700;
       letter-spacing: 0.04em;
       text-transform: uppercase;
       font-size: 0.9rem;
+      color: #111827;
     }
 
+    /* Logo mit Brettspiel-Feeling (Meeple + Karten) */
     .logo-icon {
-      width: 26px;
-      height: 26px;
-      border-radius: 9px;
-      background: radial-gradient(circle at 30% 20%, #fbbf24 0, #f97316 38%, #b45309 100%);
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #f97316, #facc15);
       position: relative;
       overflow: hidden;
+      box-shadow: 0 6px 16px rgba(249,115,22,0.45);
     }
 
-    .logo-icon::before,
+    /* Karte im Hintergrund */
+    .logo-icon::before {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 16px;
+      right: -6px;
+      top: 4px;
+      border-radius: 6px;
+      border: 2px solid rgba(248,250,252,0.9);
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      transform: rotate(18deg);
+      box-shadow: 0 4px 10px rgba(15,23,42,0.4);
+    }
+
+    /* Meeple / Spielfigur vorne */
     .logo-icon::after {
       content: "";
       position: absolute;
-      background: rgba(15,23,42,0.9);
-      border-radius: 40% 60% 55% 45%;
-    }
-
-    /* Meeple-Silhouette */
-    .logo-icon::before {
-      width: 15px;
-      height: 15px;
-      left: 5px;
-      bottom: 1px;
-      box-shadow: 4px -8px 0 0 rgba(15,23,42,0.9);
-    }
-    .logo-icon::after {
-      width: 8px;
-      height: 8px;
-      left: 9px;
-      top: 4px;
-      border-radius: 50%;
+      left: 6px;
+      bottom: 3px;
+      width: 18px;
+      height: 18px;
+      background: #111827;
+      border-radius: 45% 55% 50% 50%;
+      box-shadow:
+        4px -7px 0 0 #111827, /* Körper + Arme */
+        0 -12px 0 0 #111827;   /* Kopf */
     }
 
     nav a {
@@ -108,12 +116,12 @@
     }
 
     nav a:hover {
-      color: var(--accent-soft);
+      color: var(--accent2);
     }
 
     /* Hero */
     .hero {
-      padding: 3rem 1.5rem 2.5rem;
+      padding: 2.8rem 1.5rem 2.2rem;
     }
 
     .hero-inner {
@@ -126,32 +134,43 @@
     }
 
     .hero-title {
-      font-size: clamp(2rem, 3.1vw, 2.6rem);
+      font-size: clamp(2rem, 3vw, 2.5rem);
       margin: 0 0 0.5rem;
     }
 
     .hero-title span {
-      color: var(--accent-soft);
+      color: var(--accent2);
     }
 
     .hero-lead {
       font-size: 1rem;
       color: var(--muted);
-      margin-bottom: 1.4rem;
+      margin-bottom: 1.2rem;
     }
 
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-      margin-bottom: 1.4rem;
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(37,99,235,0.06);
+      border: 1px solid rgba(37,99,235,0.25);
+      color: var(--accent2);
+      font-size: 0.8rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .hero-note {
+      font-size: 0.85rem;
+      color: var(--muted);
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 0.6rem 1.2rem;
+      padding: 0.6rem 1.1rem;
       border-radius: 999px;
       border: 1px solid transparent;
       font-size: 0.9rem;
@@ -163,8 +182,9 @@
 
     .btn-primary {
       background: linear-gradient(to right, var(--accent), var(--accent-soft));
-      color: #111827;
-      box-shadow: 0 10px 25px rgba(234,179,8,0.35);
+      color: #1f2933;
+      box-shadow: 0 10px 20px rgba(250,204,21,0.35);
+      margin-right: 0.6rem;
     }
 
     .btn-primary:hover {
@@ -172,41 +192,43 @@
     }
 
     .btn-outline {
-      background: transparent;
-      border-color: rgba(148,163,184,0.7);
-      color: var(--muted);
+      background: #ffffff;
+      border-color: #d1d5db;
+      color: #374151;
     }
 
     .btn-outline:hover {
-      border-color: var(--accent-soft);
-      color: var(--accent-soft);
+      border-color: var(--accent2);
+      color: var(--accent2);
     }
 
-    .hero-note {
-      font-size: 0.85rem;
-      color: var(--muted);
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
     }
 
-    /* Hero board pattern */
+    /* Brettspiel-Karte rechts */
     .board-card {
       border-radius: var(--radius);
-      background: radial-gradient(circle at top, #1e293b 0, #020617 75%);
-      border: 1px solid rgba(148,163,184,0.3);
-      padding: 1.4rem 1.3rem 1.2rem;
-      box-shadow: 0 14px 40px rgba(15,23,42,0.85);
+      background: #ffffff;
+      border: 1px solid var(--card-border);
+      padding: 1.3rem 1.3rem 1.1rem;
+      box-shadow: 0 18px 40px rgba(148,163,184,0.35);
       position: relative;
       overflow: hidden;
-      min-height: 240px;
+      min-height: 220px;
     }
 
     .board-grid {
       position: absolute;
       inset: 0;
-      opacity: 0.18;
+      opacity: 0.2;
       background-image:
-        linear-gradient(90deg, rgba(148,163,184,0.35) 1px, transparent 1px),
-        linear-gradient(180deg, rgba(148,163,184,0.35) 1px, transparent 1px);
-      background-size: 48px 48px;
+        linear-gradient(90deg, rgba(209,213,219,0.7) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(209,213,219,0.7) 1px, transparent 1px);
+      background-size: 44px 44px;
     }
 
     .board-content {
@@ -221,33 +243,33 @@
       font-size: 0.8rem;
       padding: 0.25rem 0.7rem;
       border-radius: 999px;
-      background: rgba(15,23,42,0.85);
-      border: 1px solid rgba(148,163,184,0.65);
+      background: rgba(249,250,251,0.9);
+      border: 1px solid #e5e7eb;
       margin-bottom: 0.6rem;
     }
 
     .pill-dot {
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       border-radius: 999px;
       background: #22c55e;
-      box-shadow: 0 0 12px rgba(34,197,94,0.9);
+      box-shadow: 0 0 10px rgba(22,163,74,0.9);
     }
 
     .board-row {
       display: flex;
-      gap: 0.7rem;
+      gap: 0.6rem;
       margin-bottom: 0.8rem;
       flex-wrap: wrap;
     }
 
     .chip {
-      font-size: 0.78rem;
-      padding: 0.2rem 0.55rem;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 999px;
-      border: 1px solid rgba(148,163,184,0.7);
-      background: rgba(15,23,42,0.9);
-      color: var(--muted);
+      border: 1px solid #e5e7eb;
+      background: rgba(249,250,251,0.9);
+      color: #4b5563;
       display: inline-flex;
       align-items: center;
       gap: 0.25rem;
@@ -262,12 +284,12 @@
       width: 90px;
       height: 130px;
       border-radius: 12px;
-      right: 10px;
+      right: 8px;
       bottom: -10px;
-      background: #0f172a;
-      box-shadow: 0 18px 35px rgba(0,0,0,0.9);
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      box-shadow: 0 18px 35px rgba(107,114,128,0.7);
       transform: rotate(-9deg);
-      border: 1px solid rgba(148,163,184,0.7);
+      border: 2px solid #e5e7eb;
       overflow: hidden;
     }
 
@@ -277,18 +299,12 @@
       position: absolute;
       inset: 10px;
       border-radius: 10px;
-      border: 2px solid rgba(248,250,252,0.7);
-    }
-
-    .card-stack::before {
-      border-style: dashed;
-      border-color: rgba(96,165,250,0.8);
+      border: 2px solid rgba(248,250,252,0.85);
     }
 
     .card-stack::after {
-      inset: 20px;
+      inset: 22px;
       border-radius: 50%;
-      border-color: rgba(250,204,21,0.9);
     }
 
     /* Sections */
@@ -298,31 +314,31 @@
 
     section {
       max-width: 1040px;
-      margin: 0 auto 2.5rem;
+      margin: 0 auto 2.4rem;
     }
 
     section h2 {
-      margin: 0 0 0.7rem;
+      margin: 0 0 0.6rem;
       font-size: 1.4rem;
     }
 
     section p {
-      margin: 0.2rem 0 0.6rem;
+      margin: 0.2rem 0 0.7rem;
       color: var(--muted);
     }
 
     .two-cols {
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
-      gap: 1.5rem;
+      gap: 1.6rem;
     }
 
     .card {
-      background: var(--card-bg);
+      background: var(--bg-alt);
       border-radius: var(--radius);
-      padding: 1.2rem 1.2rem 1.1rem;
-      border: 1px solid rgba(148,163,184,0.35);
-      box-shadow: 0 12px 30px rgba(15,23,42,0.8);
+      padding: 1.1rem 1.2rem 1.1rem;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 10px 24px rgba(209,213,219,0.5);
     }
 
     .card h3 {
@@ -345,7 +361,7 @@
 
     ul.clean li::before {
       content: "•";
-      color: var(--accent-soft);
+      color: var(--accent2);
       margin-right: 0.4rem;
     }
 
@@ -354,11 +370,11 @@
       display: inline-block;
       padding: 0.2rem 0.6rem;
       border-radius: 999px;
-      background: rgba(37,99,235,0.15);
+      background: rgba(37,99,235,0.05);
       color: var(--accent2);
       font-size: 0.8rem;
-      margin-bottom: 0.6rem;
-      border: 1px solid rgba(59,130,246,0.5);
+      margin-bottom: 0.5rem;
+      border: 1px solid rgba(37,99,235,0.3);
     }
 
     table {
@@ -376,15 +392,16 @@
     th {
       font-weight: 600;
       color: var(--muted);
-      border-bottom: 1px solid rgba(148,163,184,0.4);
+      border-bottom: 1px solid #e5e7eb;
+      background: #f9fafb;
     }
 
     tr:nth-child(even) td {
-      background: rgba(15,23,42,0.6);
+      background: #f9fafb;
     }
 
     tr:nth-child(odd) td {
-      background: rgba(15,23,42,0.3);
+      background: #ffffff;
     }
 
     .hint {
@@ -393,7 +410,7 @@
       margin-top: 0.4rem;
     }
 
-    /* Kontakt */
+    /* Kontakt (nur Infos, kein Formular) */
     .contact-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.1fr);
@@ -411,43 +428,28 @@
       padding: 0.15rem 0.5rem;
       border-radius: 999px;
       font-size: 0.75rem;
-      background: rgba(34,197,94,0.1);
-      border: 1px solid rgba(34,197,94,0.6);
-      color: #bbf7d0;
+      background: rgba(34,197,94,0.08);
+      border: 1px solid rgba(34,197,94,0.5);
+      color: #15803d;
       margin-top: 0.3rem;
     }
 
-    .form-note {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 0.4rem;
-    }
-
-    label {
-      display: block;
-      font-size: 0.8rem;
-      margin-bottom: 0.1rem;
-      color: var(--muted);
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.5rem 0.6rem;
-      border-radius: 10px;
-      border: 1px solid rgba(148,163,184,0.6);
-      background: rgba(15,23,42,0.9);
-      color: var(--text);
-      font-family: inherit;
+    .info-box {
       font-size: 0.9rem;
-      resize: vertical;
+      color: var(--muted);
+      background: #ffffff;
+      border-radius: var(--radius);
+      border: 1px solid var(--card-border);
+      padding: 0.9rem 1rem;
+      box-shadow: 0 8px 20px rgba(209,213,219,0.55);
     }
 
     footer {
-      border-top: 1px solid rgba(148,163,184,0.25);
-      padding: 1.1rem 1.5rem 1.4rem;
+      border-top: 1px solid #e5e7eb;
+      padding: 1rem 1.5rem 1.3rem;
       font-size: 0.8rem;
       color: var(--muted);
-      background: #020617;
+      background: #f9fafb;
     }
 
     .footer-inner {
@@ -463,9 +465,6 @@
     @media (max-width: 880px) {
       .hero-inner {
         grid-template-columns: minmax(0,1fr);
-      }
-      .card-stack {
-        opacity: 0.35;
       }
       .two-cols,
       .contact-grid {
@@ -503,6 +502,9 @@
 <section class="hero">
   <div class="hero-inner">
     <div>
+      <div class="hero-badge">
+        🎲 Brettspieltreff in Lenzburg
+      </div>
       <h1 class="hero-title">
         Brettspiele, Karten & Würfel –<br />
         <span>Spielerei Lenzburg</span>
@@ -510,15 +512,15 @@
       <p class="hero-lead">
         Wir treffen uns regelmässig in Lenzburg zum gemeinsamen Spielen:
         moderne Brettspiele, Klassiker, Kartenspiele, Koop-Games und vieles mehr.
-        Jede Person ist willkommen – vom Neuling bis zur Strategiespielerin.
+        Diese Seite bietet eine kurze Übersicht und das Jahresprogramm 2026.
       </p>
       <div class="hero-buttons">
-        <a href="#jahresprogramm" class="btn btn-primary">Zum Jahresprogramm</a>
-        <a href="#ueber" class="btn btn-outline">Mehr über die Spielerei</a>
+        <a href="#jahresprogramm" class="btn btn-primary">Jahresprogramm 2026</a>
+        <a href="#ueber" class="btn btn-outline">Über die Spielerei</a>
       </div>
       <p class="hero-note">
-        Diese Seite dient als Überblick für Interessierte – hier findest du
-        eine kurze Beschreibung und die aktuellen Jahresdaten.
+        Die Spielerei ist ein offener Treff – du kannst einfach vorbeikommen,
+        mitspielen und neue Spiele kennenlernen.
       </p>
     </div>
     <div class="board-card" aria-hidden="true">
@@ -526,17 +528,17 @@
       <div class="board-content">
         <div class="pill">
           <span class="pill-dot"></span>
-          <span>Spielabend läuft</span>
+          <span>„Eine Runde geht noch…“</span>
         </div>
         <h3 style="margin:0 0 0.4rem;font-size:1.05rem;">Brettspielmix</h3>
-        <p style="margin:0 0 0.8rem;font-size:0.9rem;color:var(--muted);">
+        <p style="margin:0 0 0.8rem;font-size:0.9rem;color:#4b5563;">
           Worker Placement, Deckbuilding, Partyspiele, Koop-Abenteuer –
           wir wählen jeweils gemeinsam, was auf den Tisch kommt.
         </p>
         <div class="board-row">
           <span class="chip"><span class="meeple">♟</span> Familienspiele</span>
           <span class="chip"><span class="meeple">🎴</span> Kartenspiele</span>
-          <span class="chip"><span class="meeple">🎲</span> Würfel & Co.</span>
+          <span class="chip"><span class="meeple">🎲</span> Würfelspiele</span>
         </div>
         <div class="board-row">
           <span class="chip">Einsteiger willkommen</span>
@@ -555,22 +557,23 @@
       <div>
         <p>
           Die <strong>Spielerei Lenzburg</strong> ist ein Treffpunkt für alle,
-          die Freude an Brettspielen haben – ganz egal ob einfache
-          Familienspiele, taktische Kennerspiele oder kooperative Abenteuer.
+          die Freude an Brettspielen haben – von lockeren Familienspielen bis
+          zu taktischen Kennerspielen. Im Mittelpunkt stehen das gemeinsame
+          Spielen und ein freundliches Miteinander.
         </p>
         <p>
-          Der Fokus liegt auf gemeinsamem Spielen, Entdecken neuer Titel
-          und einem freundlichen Umgang untereinander. Du musst keine Regeln
-          im Voraus kennen – wir erklären die Spiele jeweils vor Ort.
+          Du musst keine Regeln im Voraus kennen: Die Spiele werden jeweils kurz
+          erklärt, und wir achten darauf, dass alle gut mitkommen. Neue Gesichter
+          sind jederzeit herzlich willkommen.
         </p>
       </div>
       <div class="card">
-        <h3>Was dich erwartet</h3>
+        <h3>Auf einen Blick</h3>
         <ul class="clean">
-          <li>gemütliche Spielrunden in Lenzburg</li>
-          <li>eine bunte Mischung moderner Brettspiele & Klassiker</li>
-          <li>Erklärung der Regeln durch erfahrene Mitspielende</li>
-          <li>keine Mitgliedschaft nötig – vorbeikommen & mitspielen</li>
+          <li>Offener Brettspieltreff in Lenzburg</li>
+          <li>Moderne Spiele, Klassiker und Kartenspiele</li>
+          <li>Regelerklärungen vor Ort – keine Vorkenntnisse nötig</li>
+          <li>Mitbringen eigener Spiele möglich, aber nicht Pflicht</li>
         </ul>
       </div>
     </div>
@@ -582,35 +585,35 @@
       <div class="card">
         <h3>Wie läuft ein Spielabend?</h3>
         <ul class="clean">
-          <li>Ankommen, Spiele anschauen, Gruppen bilden</li>
-          <li>Gemeinsam entscheiden, was gespielt wird</li>
-          <li>Regeln werden kurz erklärt</li>
-          <li>Spielen, wechseln, neue Titel ausprobieren</li>
+          <li>Ankommen, Begrüssung, Spiele anschauen</li>
+          <li>Gruppen bilden und gemeinsam Spiele auswählen</li>
+          <li>Regeln werden erklärt, Fragen sind jederzeit willkommen</li>
+          <li>Spielen, wechseln, neue Titel kennenlernen</li>
         </ul>
       </div>
       <div class="card">
-        <h3>Was solltest du wissen?</h3>
+        <h3>Ein paar Hinweise</h3>
         <ul class="clean">
-          <li>Du kannst eigene Spiele mitbringen – musst aber nicht</li>
-          <li>Alter: je nach Spiel ab ca. 10–12 Jahren geeignet</li>
-          <li>Getränke und Snacks nach Absprache/Ort</li>
-          <li>Sprachniveau: Deutsch (Regelerklärungen)</li>
+          <li>Alter je nach Spiel ab ca. 10–12 Jahren geeignet</li>
+          <li>Getränke/Snacks je nach Ort bzw. Absprache</li>
+          <li>Sprache der Regelerklärungen: Deutsch</li>
+          <li>Es ist keine Mitgliedschaft nötig – einfach vorbeikommen</li>
         </ul>
       </div>
     </div>
   </section>
 
   <section id="jahresprogramm">
-    <h2>Jahresprogramm</h2>
+    <h2>Jahresprogramm 2026</h2>
     <p>
-      Hier findest du die geplanten Termine der Spielerei Lenzburg.
-      Die Angaben können sich ändern – die aktuellsten Informationen
-      stehen immer hier auf der Webseite.
+      Hier sind die geplanten Spielabende der Spielerei Lenzburg für das Jahr
+      <strong>2026</strong>. Änderungen sind möglich – die aktuellste Version
+      findest du immer auf dieser Seite.
     </p>
 
     <div class="card" style="margin-top:0.8rem;">
-      <div class="year-tag">Jahr anpassen (z.&nbsp;B. 2025)</div>
-      <h3 style="margin:0 0 0.3rem;font-size:1rem;">Spielabende</h3>
+      <div class="year-tag">Spielabende 2026</div>
+      <h3 style="margin:0 0 0.3rem;font-size:1rem;">Termine</h3>
       <table>
         <thead>
           <tr>
@@ -621,33 +624,33 @@
           </tr>
         </thead>
         <tbody>
-          <!-- Diese Zeilen sind Beispiele – einfach im Code anpassen oder ergänzen -->
+          <!-- HIER deine echten Termine für 2026 eintragen -->
           <tr>
-            <td>Sa, 18. Januar 2025</td>
+            <td>Sa, 17. Januar 2026</td>
             <td>19:00 – ca. 23:00</td>
             <td>Lenzburg (genauer Ort eintragen)</td>
-            <td>Start ins Spielejahr</td>
+            <td>Start ins Spielejahr 2026</td>
           </tr>
           <tr>
-            <td>Sa, 15. März 2025</td>
+            <td>Sa, 14. März 2026</td>
             <td>19:00 – ca. 23:00</td>
             <td>Lenzburg</td>
             <td>Themenabend: Koop-Spiele</td>
           </tr>
           <tr>
-            <td>Sa, 17. Mai 2025</td>
+            <td>Sa, 16. Mai 2026</td>
             <td>19:00 – ca. 23:00</td>
             <td>Lenzburg</td>
-            <td>Offener Spieleabend</td>
+            <td>Frühlings-Spieleabend</td>
           </tr>
           <tr>
-            <td>Sa, 20. September 2025</td>
+            <td>Sa, 19. September 2026</td>
             <td>19:00 – ca. 23:00</td>
             <td>Lenzburg</td>
             <td>Neuheiten-Mix (Herbst)</td>
           </tr>
           <tr>
-            <td>Sa, 29. November 2025</td>
+            <td>Sa, 28. November 2026</td>
             <td>19:00 – ca. 23:00</td>
             <td>Lenzburg</td>
             <td>Jahresabschluss-Spieleabend</td>
@@ -655,9 +658,9 @@
         </tbody>
       </table>
       <p class="hint">
-        <strong>Hinweis:</strong> Um neue Jahresdaten zu erfassen, kannst du in GitHub
-        diese Tabelle in der <code>index.html</code> anpassen, Zeilen löschen oder
-        hinzufügen.
+        <strong>Anpassen:</strong> Wenn sich Termine ändern oder neue dazukommen,
+        kannst du diese Tabelle direkt in der <code>index.html</code> in GitHub
+        bearbeiten (Zeilen ändern, hinzufügen oder löschen).
       </p>
     </div>
   </section>
@@ -670,36 +673,18 @@
         <p>Lenzburg und Umgebung</p>
         <p class="badge">Offener Brettspieltreff</p>
         <p style="margin-top:0.8rem;">
-          Für Fragen zu Terminen, Ort oder Mitspielen melde dich gerne per E-Mail.
+          Für Fragen zu Terminen, Ort oder Mitspielen kannst du uns per E-Mail erreichen.
         </p>
         <p>
           E-Mail:
           <a href="mailto:info@spielerei-lenzburg.ch">info@spielerei-lenzburg.ch</a>
-          <br />
-          <!-- Falls du eine andere Adresse nutzt, diese Zeile im Code anpassen -->
+          <!-- Falls du eine andere Adresse verwendest, diese Zeile im Code anpassen. -->
         </p>
       </div>
-      <div class="card">
-        <h3>Kontaktformular (optional)</h3>
-        <form>
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" placeholder="Dein Name" />
-
-          <label for="email">E-Mail</label>
-          <input id="email" name="email" type="email" placeholder="dein.name@example.ch" />
-
-          <label for="message">Nachricht</label>
-          <textarea id="message" name="message" rows="4" placeholder="Deine Frage zur Spielerei Lenzburg"></textarea>
-
-          <button type="submit" class="btn btn-primary" style="margin-top:0.5rem;">
-            Noch nicht verknüpft – Formular ist Platzhalter
-          </button>
-        </form>
-        <p class="form-note">
-          Hinweis: Da die Seite auf GitHub Pages läuft, braucht ein funktionierendes
-          Formular einen externen Dienst (z.&nbsp;B. Formspree, Getform, …).
-          Bis dahin dient dieses Formular nur als Platzhalter.
-        </p>
+      <div class="info-box">
+        Diese Webseite dient als übersichtliche Informationsseite für Interessierte.
+        Es werden keine Daten über ein Formular gesammelt – für alle Anfragen genügt
+        eine kurze E-Mail.
       </div>
     </div>
   </section>
@@ -708,7 +693,7 @@
 <footer>
   <div class="footer-inner">
     <div>© <span id="year"></span> Spielerei Lenzburg</div>
-    <div>Diese Seite wird ehrenamtlich betrieben.</div>
+    <div>Diese Seite wird ehrenamtlich betreut.</div>
   </div>
 </footer>
 
